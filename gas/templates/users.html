@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GAS BOOKING</title>
+</head>
+<style>
+  body{
+    background-image: url(https://energy-utilities.com/53/pdcnewsitem/11/82/33/energy-utilities-green-hydrogen.png);
+    background-size: cover;
+}
+.table-data{
+    margin: 50px 0;
+    padding: 10px 15px 50px 15px;
+    border-radius: 8px;
+    background: rgba(14, 14, 14, 0.733);
+}
+.heading{
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+    color: white;
+    margin: 5px 0 20px 0;
+}
+.table{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+}
+.table th{
+    padding: 5px;
+    color: rgb(35, 35, 35);
+    font-size: 20px;
+    background: linear-gradient(rgb(149, 233, 248),rgb(255, 255, 253));
+    border-radius: 2px;
+    text-align: center;
+}
+.table td{
+    color: black;
+    padding: 25px;
+    border-bottom: 2px solid gray;
+}
+.data-hover{
+    transition: all .5s;
+}
+.data-hover:hover{
+    background: rgba(0, 0, 0,.9);
+}
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: rgb(236,0,0);
+    width: 50%;
+    height: 50%;
+    text-align: center;
+  }
+  
+</style>
+<body>
+  {% include 'admin_navigation.html' %}
+  <div class="user-base">
+      <div class="user-heading">
+        <h1 align=center font-weight=bold>ALL USERS</h1>
+      </div>
+      <div class="row m-auto users-base justify-content-center mt-3">
+          <div class="col-10 col-md-11" style="border:1px solid black;border-radius:10px;">
+            <table class="table">
+                <tr>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Aadhar</th>
+                    <th>City</th>
+                    <th>Action</th>
+                </tr>
+                {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.fullname }}</td>
+                    <td>{{ i.user.username }}</td>
+                    <td>{{ i.mobile }}</td>
+                    <td>{{ i.aadhar }}</td>
+                    <td>{{ i.city }}</td>
+                    <td>
+                        <a href="{% url 'delete_user' i.user.id %}" class="cancelbtn">Delete</a>
+                    </td>
+                </tr>
+                  {% endfor %}
+              </table>
+              {% if not data %}
+                  <h1 align="center">No Data Found</h1>
+              {% endif %}
+          </div>
+      </div>
+  </div>
+</body>
+
+</html>
+{% include 'footer.html' %}

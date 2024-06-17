@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GAS-BOOKING</title>
+<style>
+    .count-data{
+        font-size: 15px;
+        text-align: center;
+        font-weight: bold;
+    }
+    #d1, #d2, #d3, #d4{
+        font-weight: bold;
+        font-size: 40px;
+        color: rgb(10, 176, 5);
+    }
+    body{
+        background-image: url(https://images.unsplash.com/photo-1631985455894-65311148a768?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHBnfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
+        background-size: 100% 100%;
+    }
+    .home-page{
+        padding-top: 40px;
+    }
+    .moving-data{
+        background-color: rgba(255, 255, 255,.7);
+        padding: 20px;
+        margin: 100px 0;
+        border-radius: 10px;
+        padding: 40px 4px 80px 4px;
+    }
+
+
+</style>
+</head>
+<body>
+{% include 'navigation.html' %}
+<div class="row m-auto justify-content-around home-page">
+    <div class="col-md-4 moving-data">
+        <div style="text-align: center;font-weight: bold;font-size: 35px;text-decoration: underline;">Our Record</div>
+        <div style="display: flex;;border-bottom: 3px solid gray;" class="justify-content-around">
+            <div class="count-data">Total Happy Customes <br /> <p id="d1"></p></div>
+            <div class="count-data">Total Booking Done <br /> <span id="d2">+</span></div>
+        </div><br>
+        <div style="display: flex;border-bottom: 3px solid gray;" class="justify-content-around">
+            <div class="count-data">Out Working Years <br /> <span id="d3">+</span></div>
+            <div class="count-data">Out Branch in India <br /> <span id="d4">+</span></div>
+        </div>
+    </div>
+    <div class="col-md-5"></div>
+</div>
+
+<script>
+    let a1=0;
+    let a2=1000;
+    let a3=0;
+    let a4=0;
+    function movedata(){
+        if(a1!=551){
+            d1.innerHTML=a1;
+            a1+=50;
+            if(a1==550){d1.innerHTML+='+';a1++;}
+        }
+        if(a2!=5501){
+            d2.innerHTML=a2;
+            a2+=500;
+            if(a2==5500){d2.innerHTML+='+';a2++;}
+        }
+        if(a3!=27){
+            d3.innerHTML=a3;
+            a3+=1;
+            if(a3==26){d3.innerHTML+='+';a3++;}
+        }
+        if(a4!=17){
+            d4.innerHTML=a4;
+            a4+=1;
+            if(a4==16){d4.innerHTML+='+';a4++;}
+        }
+        
+        setTimeout(movedata,100);
+    }
+    movedata();
+</script>
+</body>
+
+</html>
+{% include 'footer.html' %}

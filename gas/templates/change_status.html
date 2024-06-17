@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Change Status</title>
+<style>
+    .heading{
+        color: white;
+    }
+    .status-base{
+        background-image: url(https://w0.peakpx.com/wallpaper/41/600/HD-wallpaper-connectivity-digital-blue-abstract-background-android-technology.jpg);
+        background-size: cover;
+    }
+    .form-base{
+        margin: auto;
+        background: rgba(255, 255, 255, 0.771);
+        width: 50%;
+        padding: 20px 80px;
+        border-radius: 20px;
+    }
+    .status-table{
+        width: 100%;
+        font-size: 22px;
+    }
+    .btn {
+        float: center;
+        color: green;
+      }
+      
+      /* Add padding to container elements */
+      .container {
+        padding: 16px;
+      }
+      
+      /* Clear floats */
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+</style>
+</head>
+</head>
+<body class="status-base">
+    {% include 'admin_navigation.html' %}
+    <h1 class="heading" align="center"><u>Change Status Page</u></h1>
+    <div class="form-base">
+        <form method="post">
+            {% csrf_token %}
+            <table class="status-table" cellpadding="5"> 
+                <tr>
+                    <th>Name</th>
+                    <td> : {{ data.fullname }}</td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td> : {{ data.contact }}</td>
+                </tr>
+                <tr>
+                    <th>Booking Date</th>
+                    <td> : {{ data.booking_date }}</td>
+                </tr>
+                <tr>
+                    <th>Gas Type</th>
+                    <td> : {{ data.type }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td> : {{ data.price }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td> : {{ data.address }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td> : {{ data.email }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        {% if data.status == "Pending" %}
+                        <select name="status" class="form-control">
+                            <option selected value="Pending">Pending</option>
+                            <option value="Confirm">Confirm</option>
+                            <option value="Cancel">Cancel</option>
+                        </select>
+                        {% endif %}
+                        {% if data.status == "Confirm" %}
+                        <select name="status" class="form-control">
+                            <option value="Pending">Pending</option>
+                            <option selected value="Confirm">Confirm</option>
+                            <option value="Cancel">Cancel</option>
+                        </select>
+                        {% endif %}
+                        {% if data.status == "Cancel" %}
+                        <select name="status" class="form-control">
+                            <option value="Pending">Pending</option>
+                            <option value="Confirm">Confirm</option>
+                            <option selected value="Cancel">Cancel</option>
+                        </select>
+                        {% endif %}
+                    </td>
+                    <tr>
+                        <td align="center" colspan="3">
+                            <input type="submit" class="btn btn-primary btn-lg mt-4">
+                        </td>
+                    </tr>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+
+{% if error == "no" %}
+<script>
+    alert("Status Changed successfully");
+    window.location = ("{% url 'booking' %}");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong");
+</script>
+{% endif %}
+

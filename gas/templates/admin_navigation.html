@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>admin_navigation</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+    .base{
+        background: rgb(236, 0, 0);
+        padding: 15px 0;
+        text-align: center;
+    }
+    .base li{
+        display: inline;
+    }
+    .base li a{
+        text-decoration: none;
+        border: 4px solid black;
+        margin: 0 10px;
+        font-weight: bold;
+        font-size: 24px;
+        padding: 5px 15px;
+        border-radius: 5px;
+        color: rgb(63, 37, 37);
+        font-family: Trebuchet MS;
+        transition: all 1s;
+    }
+    .base li a:hover{
+        background: rgb(255, 255, 255);
+        box-shadow: 0 0 8px 6px black;}
+</style>
+<body>
+    <div class="base">
+        <ul>
+            <li><a href="{% url 'admin_home' %}">Home</a></li>
+            <li><a href="{% url 'booking' %}">Bookings</a></li>
+            <li><a href="{% url 'user' %}">Users</a></li>
+            <li><a href="{% url 'view_feedback' %}">Feedback</a></li>
+            <li><a href="{% url 'Logout' %}">Logout</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<head>
+<title>
+  LOGIN
+</title>
+<style>
+  form {
+    border: 3px solid #f1f1f1;
+  }
+  
+  /* Full-width inputs */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  /* Set a style for all buttons */
+  button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Extra style for the cancel button (red) */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    width: 100%;
+  }
+  
+
+
+  /* Add padding to containers */
+  .container {
+    padding: 16px;
+  }
+  
+  /* The "Forgot password" text */
+  span.psw {
+    float: right;
+    padding-top: 16px;
+  }
+</style>
+<body>
+    {% include 'navigation.html' %}
+    <div class="row m-auto justify-content-start login-deep">
+      <div class="col-1"></div>
+      <div class="col-10 col-md-5 login-base">
+        <form method="post">    
+          {% csrf_token %}
+         <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+        
+            <label for="pswd"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pswd" required>
+        
+            <button type="submit">Login</button>
+            <button type="button" class="cancelbtn">Cancel</button>
+        </form>
+  </div>
+</body>
+</html>
+
+
+{% if error == "no" %}
+<script>
+    alert("Admin Login Successfully")
+    window.location = ("{% url 'admin_home' %}")
+</script>
+{% endif %}
+
+{% if error == "user" %}
+<script>
+    alert("User Login Successfully");
+    window.location = ("{% url 'user_home' %}");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Invalid Login Details, Try Again.....")
+    window.location = ("{% url 'login' %}")
+</script>
+{% endif %}
+{% include 'footer.html' %}

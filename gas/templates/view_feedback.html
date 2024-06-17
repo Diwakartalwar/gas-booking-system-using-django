@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+<style>
+    body{
+        background-image: url(https://energy-utilities.com/53/pdcnewsitem/11/82/33/energy-utilities-green-hydrogen.png);
+        background-size: cover;
+    }
+    .table-data{
+        margin: 50px 0;
+        padding: 10px 15px 50px 15px;
+        border-radius: 8px;
+        background: rgba(14, 14, 14, 0.733);
+    }
+    .complain-heading{
+        font-size: 40px;
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: center;
+        color: white;
+        margin: 5px 0 20px 0;
+    }
+    .complain-table{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        width: 100%;
+    }
+    .complain-table th{
+        padding: 5px;
+        color: rgb(35, 35, 35);
+        font-size: 20px;
+        background: linear-gradient(rgb(149, 233, 248),rgb(255, 255, 253));
+        border-radius: 2px;
+        text-align: center;
+    }
+    .complain-table td{
+        color: white;
+        padding: 25px;
+        border-bottom: 2px solid gray;
+    }
+    .data-hover{
+        transition: all .5s;
+    }
+    .data-hover:hover{
+        background: rgba(0, 0, 0,.9);
+    }
+</style>
+</head>
+<body>
+    {% include 'admin_navigation.html' %}
+    <div class="container table-data">
+        <div class="complain-heading">All FEEDBACK</div>
+        <table class="complain-table">
+            <tr>
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Complain</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr class="data-hover">
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.contact}}</td>
+                <td>{{i.complain}}</td>
+                <td><a href="{% url 'delete_feedback' i.id %}" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if not data %}
+        <h1 aria-label="center" style="color:black;">No Data Found</h1>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+{% include 'footer.html' %}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Gas</title>
+</head>
+<style>
+    .book-base{
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20230617/pngtree-steel-gas-pipeline-3d-render-with-pink-valve-and-gas-cylinder-image_3617233.jpg);
+    background-size: 100% 100%;
+    padding: 40px 40px;
+}
+.book-main{
+    width: 40%;
+    margin: 20px 10px;
+    padding: 20px;
+    background: rgba(255, 255, 255,.5);
+    text-align: center;
+    border-radius: 10px;
+}
+.book-input{
+    display: block;
+    margin: auto;
+    width: 70%;
+    padding: 5px 10px;
+    font-size: 20px;
+    margin-top: 7px;
+    border-radius: 4px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.book-button{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 5px 20px;
+    margin-top: 15px;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 4px gray;
+    background: linear-gradient(brown, yellow);
+}
+</style>
+<script>
+    
+</script>
+<body>
+    {% include 'user_navigation.html' %}
+<div class="book-base">
+    <div class="book-main">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="fname" class="book-input" placeholder="Enter Full Name">
+            <input type="number" name="contact" class="book-input" placeholder="Enter contact number">
+            <input type="text" name="bdate" class="book-input" id="fix" placeholder="Booking Date" readonly>
+            <select class="book-input" name="type" id="type" onchange="price1()">
+                <option value="Home Gas">Home Gas</option>
+                <option value="Commercial Gas">Commercial Gas</option>
+            </select>
+            <input type="text" name="price" class="book-input" id="fixprice" placeholder="Total Price" readonly>
+            <input type="text" name="address" class="book-input" placeholder="Write Shipping address">
+            <input type="submit" class="book-button">
+        </form>
+    </div>
+</div>
+
+<script>
+    let d = new Date();
+    let dt = d.getDate();
+    let m = d.getMonth()+1;
+    let y = d.getFullYear();
+    dt = dt+"-"+m+'-'+y;
+    fix.value=dt;
+    fixprice.value=1100;
+    function price1(){
+        if (type.value == "Home Gas"){
+            fixprice.value=1100;
+        }else{
+            fixprice.value=1600;
+        }
+    }
+</script>
+</body>
+</html>
+
+{% if error == "no" %}
+<script>
+    alert("Booking request has been send successfully.");
+    window.location = ("{% url 'user_home' %}");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong...");
+</script>
+{% endif %}

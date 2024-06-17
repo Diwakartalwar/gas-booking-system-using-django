@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>All Bookings</title>
+</head>
+<style>
+    body{
+        background-image: url(https://energy-utilities.com/53/pdcnewsitem/11/82/33/energy-utilities-green-hydrogen.png);
+        background-size: cover;
+    }
+    .table-data{
+        margin: 50px 0;
+        padding: 10px 15px 50px 15px;
+        border-radius: 8px;
+        background: rgba(14, 14, 14, 0.733);
+    }
+    .heading{
+        font-size: 40px;
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: center;
+        color: white;
+        margin: 5px 0 20px 0;
+    }
+    .table{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        width: 100%;
+    }
+    .table th{
+        padding: 5px;
+        color: rgb(35, 35, 35);
+        font-size: 20px;
+        background: linear-gradient(rgb(149, 233, 248),rgb(255, 255, 253));
+        border-radius: 2px;
+        text-align: center;
+    }
+    .table td{
+        color: black;
+        padding: 25px;
+        border-bottom: 2px solid gray;
+    }
+    .data-hover{
+        transition: all .5s;
+    }
+    .data-hover:hover{
+        background: rgba(0, 0, 0,.9);
+    }
+</style>
+<body>
+    {% include 'admin_navigation.html' %}
+    <h1 align="center">All Bookings</h1>
+    <div class="container booking-base">
+        <table class="table booking-table">
+            <tr class="table-primary">
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Booking Date</th>
+                <th>Gas Type</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.fullname }}</td>
+                <td>{{ i.contact }}</td>
+                <td>{{ i.booking_date }}</td>
+                <td>{{ i.type }}</td>
+                <td>{{ i.price }}</td>
+                <td>{{ i.address }}</td>
+                <td><a href="{% url 'change_status' i.id %}">
+                    {% if i.status == "Pending" %}
+                        <span class="btn btn-secondary btn-sm">{{ i.status }}</span>
+                    {% endif %}
+                    {% if i.status == "Confirm" %}
+                        <span class="btn btn-success btn-sm">{{ i.status }}</span>
+                    {% endif %}
+                    {% if i.status == "Cancel" %}
+                        <span class="btn btn-danger btn-sm">{{ i.status }}</span>
+                    {% endif %}
+                </a></td>
+                <td>
+                    <a href="{% url 'delete_booking' i.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}

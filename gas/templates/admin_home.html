@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        body {
+            /* background: linear-gradient(to right, rgb(196, 250, 196), rgb(153, 153, 247)); */
+            background-image: url(https://wallpaperaccess.com/full/7053870.jpg);
+            background-size: 100% 100%;
+        }
+
+        .userhome-main {
+            background: rgba(153, 153, 247, .6);
+            border-radius: 5px;
+            padding: 10px;
+            height: 480px;
+            margin-bottom: 20px;
+            animation: demo 2s alternate infinite linear;
+        }
+
+        .welcome-heading {
+            font-size: 74px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 3px 3px 2px rgb(255, 255, 255);
+            animation: demo2 2s alternate 1 linear;
+            color: rgb(0, 0, 0);
+        }
+
+    </style>
+</head>
+
+<body>
+    {% include 'admin_navigation.html' %}
+    <div class="row m-auto">
+        <div class="col-1"></div>
+        <div class="col-4 mt-5 userhome-main">
+            <div class="welcome-name">
+                <div class="welcome-heading">
+                    Welcome <br>ADMIN <br> To <br> E-Gas <br> Booking System
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+{% include 'footer.html' %}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Feedback</title>
+</head>
+<style>
+    * {box-sizing: border-box}
+    /* Full-width input fields */
+      input[type=text], input[type=password], input[type=email], input[type=number] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: inline;
+      background: #f1f1f1;
+    }
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;}
+
+          
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+      }
+      
+      /* Set a style for all buttons */
+      button {
+        background-color: rgb(0,147,0);
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+      }
+</style>
+<body>
+    {% include 'user_navigation.html' %}
+    <div class="feedback-base">
+        <div class="container">
+            <form method="post" class="feedback-main">
+                <h1 align="center" style="color: white;">Write your Feedback</h1>
+                {% csrf_token %}
+                <input type="text" class="feedback-input" name="name" placeholder="Enter full name">
+                <input type="email" class="feedback-input" name="email" value="{{request.user.username}}" readonly>
+                <input type="number" class="feedback-input" name="contact" placeholder="Enter Contact Number">
+                <input type="text" class="feedback-input" name="feedback" placeholder="Write your valuable feedback">
+                <input type="submit" class="feedback-button">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% if error == "no" %}
+<script>
+    alert("Feedback submitted successfully!");
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something went wront!");
+</script>
+{% endif %}
+
+
+{% include 'footer.html' %}

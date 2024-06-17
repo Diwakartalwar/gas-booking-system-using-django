@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Booking</title>
+</head>
+<body>
+    {% include 'user_navigation.html' %}
+    <h1 align="center">My Booking</h1>
+    <div class="container mybooking-base">
+        <table border="1" class="table"> 
+            <tr>
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Booking Date</th>
+                <th>Gas Type</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>Status</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ i.fullname }}</td>
+                <td>{{ i.contact }}</td>
+                <td>{{ i.booking_date }}</td>
+                <td>{{ i.type }}</td>
+                <td>{{ i.price }}</td>
+                <td>{{ i.address }}</td>
+                <td>
+                    {% if i.status == "Pending" %}
+                        <span class="btn btn-secondary btn-sm disabled">{{ i.status }}</span>
+                    {% endif %}
+                    {% if i.status == "Confirm" %}
+                        <span class="btn btn-success btn-sm disabled">{{ i.status }}</span>
+                    {% endif %}
+                    {% if i.status == "Cancel" %}
+                        <span class="btn btn-danger btn-sm disabled">{{ i.status }}</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}
