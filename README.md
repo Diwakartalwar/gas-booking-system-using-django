@@ -41,3 +41,19 @@ Please create a pull request on GitHub with your changes.
 
 
 THANK YOU
+
+screenshots
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/4cb6ad0a-541f-40c3-bd9f-c654802145c7)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/f8f0ca79-fd2c-4966-a32c-46040f23bbe7)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/bc77f842-6ed7-46df-9675-dd3f92234f3b)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/01e21a01-526a-483a-9c3c-45c7458ea37e)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/7b6e8a19-35c4-4a0e-8812-0942c4273b81)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/1e2d7562-1070-46cb-99b0-8a35378fa73b)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/faf61f84-325e-4ecf-8cb1-25bb3c8f1de7)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/7c4512db-ef64-4d6a-9957-9ff1aaa5933e)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/ebfce2e4-f92c-4cd4-871c-a35e8e292e4b)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/33193321-cd15-4578-81fe-dc165a2aa3d3)
+![image](https://github.com/Diwakartalwar/gas-booking-system-using-django/assets/82386483/7f8c9ad0-64a2-4bda-8031-91dc236cf9a8)
+
+
+
